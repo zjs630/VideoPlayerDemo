@@ -12,8 +12,6 @@ class CarNewsDataTool {
 
     // 获取资讯列表
     class func getListByTopic(_ parameters: [String: Any], _ finishedCallback: @escaping (_ result: JSON?) -> Void) {
-        
-        //let chanel: Int = Int(parameters["channel"] as! String) ?? 1
         let resource = "demo4.json"
         do {
             let urlStr = Bundle.main.path(forResource: resource, ofType: nil)!
@@ -21,10 +19,8 @@ class CarNewsDataTool {
             let result = try JSON(data: data)
             finishedCallback(result)
         } catch {
-            print(error)
             finishedCallback(nil)
         }
         
-
     }
 }

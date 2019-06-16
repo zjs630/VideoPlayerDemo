@@ -46,6 +46,7 @@
 		E58A14B022B610270064666E /* BadNetworkRetryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A148B22B610270064666E /* BadNetworkRetryable.swift */; };
 		E58A14B122B610270064666E /* ErrorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A148C22B610270064666E /* ErrorViewable.swift */; };
 		E5D5E95822B6113E00D95942 /* YHUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5E95722B6113D00D95942 /* YHUserAPI.swift */; };
+		E5D5E95A22B6465700D95942 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5E95922B6465700D95942 /* UINavigationController+Extension.swift */; };
 		E5F95ACD22B60E8B00A9BDA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F95ACC22B60E8B00A9BDA1 /* AppDelegate.swift */; };
 		E5F95AD422B60E8D00A9BDA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5F95AD322B60E8D00A9BDA1 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,7 @@
 		E58A148C22B610270064666E /* ErrorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewable.swift; sourceTree = "<group>"; };
 		E5D5E95622B6113D00D95942 /* YHUser-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YHUser-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5D5E95722B6113D00D95942 /* YHUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAPI.swift; sourceTree = "<group>"; };
+		E5D5E95922B6465700D95942 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		E5F95AC922B60E8B00A9BDA1 /* VideoPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F95ACC22B60E8B00A9BDA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5F95AD322B60E8D00A9BDA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,10 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				E58A140222B60F870064666E /* YHPlayer.swift */,
+				E58A140C22B60F870064666E /* Controllers */,
 				E58A13FF22B60F870064666E /* Others */,
 				E58A140322B60F870064666E /* Extensions */,
 				E58A140822B60F870064666E /* View */,
-				E58A140C22B60F870064666E /* Controllers */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -258,6 +260,7 @@
 				E58A144A22B610270064666E /* Int+Extension.swift */,
 				E58A144B22B610270064666E /* UIView+Extension.swift */,
 				E58A144C22B610270064666E /* UIImage+Extension.swift */,
+				E5D5E95922B6465700D95942 /* UINavigationController+Extension.swift */,
 				E58A144D22B610270064666E /* String+Extension.swift */,
 				E58A144E22B610270064666E /* UIViewControler+Extension.swift */,
 				E58A145022B610270064666E /* CGFloat+Extension.swift */,
@@ -452,6 +455,7 @@
 				E58A142922B60F870064666E /* String+Extensions.swift in Sources */,
 				E58A149622B610270064666E /* Double+DateFormater.swift in Sources */,
 				E58A142A22B60F870064666E /* AVPlayerItem+YHPlayer.swift in Sources */,
+				E5D5E95A22B6465700D95942 /* UINavigationController+Extension.swift in Sources */,
 				E58A142D22B60F870064666E /* YHVideoPlayerView.swift in Sources */,
 				E58A143E22B60F870064666E /* CNListNormalViewController.swift in Sources */,
 				E58A148F22B610270064666E /* Int+Extension.swift in Sources */,
@@ -614,6 +618,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D9G7B2VR3J;
 				INFOPLIST_FILE = VideoPlayerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -635,6 +640,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D9G7B2VR3J;
 				INFOPLIST_FILE = VideoPlayerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
