@@ -120,7 +120,7 @@ class WKWebViewController: UIViewController, ErrorViewable {
 
         scriptMessageHandlers["callPhone"] = { message in
             if let tel = message.body as? String, let url = URL(string: "telprompt://" + tel) {
-                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                UIApplication.shared.open(url, completionHandler: nil)
             }
         }
 
@@ -166,10 +166,6 @@ class WKWebViewController: UIViewController, ErrorViewable {
         }
 
 
-        scriptMessageHandlers["getToken"] = { [weak self] _ in
-            self?.setCommonable()
-        }
-
         scriptMessageHandlers["pushCarInfo"] = { [weak self] message in
             guard let `self` = self else { return }
             if let info = message.body as? String, info != "" {
@@ -190,15 +186,12 @@ class WKWebViewController: UIViewController, ErrorViewable {
                     default: break
                     }
                 }
-                // 定义NSURL
-                if let imgURL = URL(string: shareIMGUrl) {
-                    SessionManager.default.request(imgURL).responseData(completionHandler: { [weak self] response in
-                        if let data = response.data, let image = UIImage(data: data) {
-                            self?.shareImage = image
-                        }
-                    })
+
+                AF.request(shareIMGUrl).responseData {  [weak self] response in
+                    if let data = response.data, let image = UIImage(data: data) {
+                        self?.shareImage = image
+                    }
                 }
-                //self.setNaviRight(self, selector: #selector(self.showShare), image: "naviShare", title: nil)
             } else {
                 self.navigationItem.rightBarButtonItem = nil
             }
@@ -218,7 +211,7 @@ class WKWebViewController: UIViewController, ErrorViewable {
 
         scriptMessageHandlers["gotoExternalBrowser"] = { _ in
             if let url = URL(string: "itms-apps://itunes.apple.com/cn/app/id1271307008?mt=8") {
-                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                UIApplication.shared.open(url, completionHandler: nil)
             }
         }
 
@@ -256,7 +249,7 @@ extension WKWebViewController: WKNavigationDelegate, UIScrollViewDelegate {
     }
 
     func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-//                Log(navigationAction.request.url)
+        //                Log(navigationAction.request.url)
         if let url = navigationAction.request.url {
             guard let scheme = url.scheme else {
                 decisionHandler(.cancel)
@@ -264,7 +257,7 @@ extension WKWebViewController: WKNavigationDelegate, UIScrollViewDelegate {
                 return
             }
             if scheme.hasSuffix("tel") {
-                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                UIApplication.shared.open(url, completionHandler: nil)
                 decisionHandler(.cancel)
                 isLoading = false
                 return
@@ -302,17 +295,6 @@ extension WKWebViewController: WKNavigationDelegate, UIScrollViewDelegate {
     func webView(_ webView: WKWebView, didFinish _: WKNavigation!) {
         Log("加载完成。。。")
         errorView.displayType = .hidden
-        /// 是否一号车市域名，非一号车市的web，没有必要执行脚本
-        var isYhcsDomain = webView.url?.absoluteString.contains("yhcs.com") ?? false
-        #if DEBUG // 可能和某个固定ip联调
-            isYhcsDomain = true
-        #endif
-        if isYhcsDomain {
-            setCommonable()
-            webView.evaluateJavaScript(String(format: "setParam('no')")) { _, _ in
-                // Log(dic,error)
-            }
-        }
         isLoading = false
     }
 
@@ -343,7 +325,7 @@ extension WKWebViewController: WKNavigationDelegate, UIScrollViewDelegate {
             return
         }
         var request = URLRequest(url: url)
-//        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        //        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         request.timeoutInterval = 15
         webView.load(request)
     }
@@ -379,7 +361,7 @@ extension WKWebViewController: WKScriptMessageHandler {
     private func setupRightBtn(_ title: String) {
         switch title {
         case "":
-//            setRight(self, selector: #selector(rightBtnCilicked(_:)), image: "Image", title: nil)
+            //            setRight(self, selector: #selector(rightBtnCilicked(_:)), image: "Image", title: nil)
             break
         case "nothing": navigationItem.rightBarButtonItem = nil
         default:
@@ -442,20 +424,12 @@ extension WKWebViewController: WKScriptMessageHandler {
         }
     }
 
-    /// 设置用户信息：token，城市id，手机号
-    private func setCommonable() {
-//        let function = "setCommonable('\(User.shared.token ?? "")','\(City.shared.id)','\(User.shared.mobile ?? "")',\(TARGET_OS_SIMULATOR == 0),'\(UserDefaults.standard.value(forKey: "deviceToken") ?? "")','\(User.shared.customerId ?? 0)')"
-//        webView.evaluateJavaScript(function) { dic, error in
-//            Log(function)
-//            Log(dic, error)
-//        }
-    }
 
     /// H5分享到朋友圈
     private func h5ShareLuck() {
-//        showSharePlatforms(needCopy: isShowCopyUrl) { _, _ in
-////            self?.tellH5(shareSuccess: error == nil)
-//        }
+        //        showSharePlatforms(needCopy: isShowCopyUrl) { _, _ in
+        ////            self?.tellH5(shareSuccess: error == nil)
+        //        }
     }
 
     /// 告知H5分享是否成功
@@ -497,25 +471,6 @@ extension WKWebViewController: WKScriptMessageHandler {
 
     private func tellH5(keyboardHeight height: CGFloat) {
         Log(height)
-//        webView.evaluateJavaScript(String(format: "setKeyboardHeight('\(height)');")) { (dic, error) in
-//            Log(dic,error)
-//        }
     }
 }
 
-//extension WKWebViewController: Shareable {
-//    @objc func showShare() {
-//        isOnlyShareImage = false
-//        showSharePlatforms(needCopy: isShowCopyUrl) { [weak self] _, error in
-//            self?.tellH5(shareSuccess: error == nil)
-//        }
-//        MobClick.event(String.EventId.carPageShare)
-//    }
-//}
-
-extension WKWebViewController: BadNetworkRetryable {}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-    return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value) })
-}

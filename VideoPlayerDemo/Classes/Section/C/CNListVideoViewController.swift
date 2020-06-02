@@ -42,7 +42,7 @@ class CNListVideoViewController: CNListNormalViewController {
 
         CarNewsDataTool.getListByTopic(dic) { [weak self] json in
             guard let this = self else { return }
-            this.tableView.mj_header.endRefreshing()
+            this.tableView.mj_header?.endRefreshing()
             guard let result = ((try? json?["result"]["rows"].rawData()) as Data??) else {
                 this.tableView.reloadData()
                 this.errorView.isHidden = !(this.carNewses.count == 0)

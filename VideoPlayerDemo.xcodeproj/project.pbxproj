@@ -43,7 +43,6 @@
 		E58A14AD22B610270064666E /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A148722B610270064666E /* BasicTableViewCell.swift */; };
 		E58A14AE22B610270064666E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A148822B610270064666E /* ErrorView.swift */; };
 		E58A14AF22B610270064666E /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A148A22B610270064666E /* Refreshable.swift */; };
-		E58A14B022B610270064666E /* BadNetworkRetryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A148B22B610270064666E /* BadNetworkRetryable.swift */; };
 		E58A14B122B610270064666E /* ErrorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A148C22B610270064666E /* ErrorViewable.swift */; };
 		E5D5E95822B6113E00D95942 /* YHUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5E95722B6113D00D95942 /* YHUserAPI.swift */; };
 		E5D5E95A22B6465700D95942 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5E95922B6465700D95942 /* UINavigationController+Extension.swift */; };
@@ -90,7 +89,6 @@
 		E58A148722B610270064666E /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		E58A148822B610270064666E /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		E58A148A22B610270064666E /* Refreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
-		E58A148B22B610270064666E /* BadNetworkRetryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadNetworkRetryable.swift; sourceTree = "<group>"; };
 		E58A148C22B610270064666E /* ErrorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewable.swift; sourceTree = "<group>"; };
 		E5D5E95622B6113D00D95942 /* YHUser-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YHUser-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5D5E95722B6113D00D95942 /* YHUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAPI.swift; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				E58A148A22B610270064666E /* Refreshable.swift */,
-				E58A148B22B610270064666E /* BadNetworkRetryable.swift */,
 				E58A148C22B610270064666E /* ErrorViewable.swift */,
 			);
 			path = Protocols;
@@ -484,7 +481,6 @@
 				E58A143922B60F870064666E /* CNDetailNormalViewController.swift in Sources */,
 				E58A143D22B60F870064666E /* CNListVideoViewController.swift in Sources */,
 				E58A142622B60F870064666E /* YHMediaManager.swift in Sources */,
-				E58A14B022B610270064666E /* BadNetworkRetryable.swift in Sources */,
 				E58A149722B610270064666E /* MJChiBaoZiHeader.m in Sources */,
 				E58A144022B60F870064666E /* CarNewsVideoCell.swift in Sources */,
 				E58A144122B60F870064666E /* CarNewsCell.swift in Sources */,

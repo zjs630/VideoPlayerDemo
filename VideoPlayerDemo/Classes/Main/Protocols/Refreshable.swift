@@ -33,22 +33,15 @@ extension Refreshable where Self: UIViewController {
         let header = MJChiBaoZiHeader { [weak self] in
             self?.refreshList()
         }
-        header?.lastUpdatedTimeLabel.isHidden = true
-        header?.labelLeftInset = 5
-        header?.stateLabel.font = UIFont.systemFont(ofSize: 12)
-        header?.stateLabel.textColor = UIColor(0x666666)
-        header?.backgroundColor = .mainBG
+        header.lastUpdatedTimeLabel?.isHidden = true
+        header.labelLeftInset = 5
+        header.stateLabel?.font = UIFont.systemFont(ofSize: 12)
+        header.stateLabel?.textColor = UIColor(0x666666)
+        header.backgroundColor = .mainBG
 
         refreshView.mj_header = header
 
-        refreshView.mj_header.beginRefreshing()
+        refreshView.mj_header?.beginRefreshing()
 
-//        let footer = MJRefreshAutoStateFooter { [weak self] in
-//            self?.loadMore()
-//        }
-//        footer?.stateLabel.font = UIFont.systemFont(ofSize: 13)
-//        footer?.stateLabel.textColor = UIColor(0x666666)
-//        footer?.isHidden = true
-//        refreshView.mj_footer = footer
     }
 }

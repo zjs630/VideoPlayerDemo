@@ -17,19 +17,21 @@ class YHNetworkManager: NSObject {
     override init() {
         super.init()
 
-        if let net = network, net.startListening() {
+        let listener = { (status: NetworkReachabilityManager.NetworkReachabilityStatus)  in
+            self.status = status
+            switch status {
+            case .notReachable, .unknown:
+                break
+            case let .reachable(type):
+                self.isWifi = type == .ethernetOrWiFi ? true : false
+                printLog(self.isWifi)
+            }
+        }
+
+        if let net = network, net.startListening(onUpdatePerforming: listener) {
             isWifi = net.isReachableOnEthernetOrWiFi
             printLog(isWifi)
-            net.listener = { [weak self] status in
-                self?.status = status
-                switch status {
-                case .notReachable, .unknown:
-                    break
-                case let .reachable(type):
-                    self?.isWifi = type == .ethernetOrWiFi ? true : false
-                    printLog(self?.isWifi)
-                }
-            }
+
         }
     }
 }

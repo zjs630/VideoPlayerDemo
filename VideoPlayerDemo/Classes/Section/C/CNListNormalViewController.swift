@@ -116,7 +116,7 @@ class CNListNormalViewController: UITableViewController, Refreshable, ErrorViewa
     }
 
     func didCilicked(errorView _: ErrorView) {
-        tableView.mj_header.beginRefreshing()
+        tableView.mj_header?.beginRefreshing()
     }
 
     /// 刷新列表
@@ -132,7 +132,7 @@ class CNListNormalViewController: UITableViewController, Refreshable, ErrorViewa
 
             guard let this = self else { return }
 
-            this.tableView.mj_header.endRefreshing()
+            this.tableView.mj_header?.endRefreshing()
 
             guard let result = ((try? json?["result"]["rows"].rawData()) as Data??) else {
                 this.tableView.reloadData()

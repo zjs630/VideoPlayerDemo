@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-private let imgWidth = (.screenWidth - 20 * 2 - 3 * 2) / 3
+private let imgWidth = (CGFloat.screenWidth - 20 * 2 - 3 * 2) / 3
 private let imgHeight = imgWidth / 2
 
 class CarNewsOneIMGCell: BasicTableViewCell {
